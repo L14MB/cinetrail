@@ -9,9 +9,9 @@ export default function ThemeContextProvider(props) {
 
  useEffect(() => {
    const theme = localStorage.getItem('darkMode')
-   setDarkMode(JSON.parse(theme))
-
-
+   if(theme!==null){
+      setDarkMode(JSON.parse(theme))
+   }
 }, [])
 
  return (

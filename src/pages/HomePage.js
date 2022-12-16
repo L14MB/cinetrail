@@ -17,7 +17,6 @@ function HomePage({apiKey,baseUrl}) {
     useEffect(() => {
         axios.get(`${baseUrl}/movie/popular?api_key=${apiKey}&page=${page}`)
         .then(res=>{
-            console.log(res.data.results)
             setPopularMovies(res.data.results)
         })
         .catch(err=>console.log(err))
@@ -41,7 +40,7 @@ function HomePage({apiKey,baseUrl}) {
                   <div className='popular-cards-wrapper'>
                     {
                         popularMovies?.map(movie=>{
-                            return <MovieCard height={'300px'} imageUrl={movie.poster_path} 
+                            return <MovieCard key={movie.id} height={'300px'} imageUrl={movie.poster_path} 
                             cardStyle={'popular-card'} data={movie}
                             radius={'16px'}/>
                         })
@@ -50,8 +49,8 @@ function HomePage({apiKey,baseUrl}) {
                   <div className='page-numbers'>
                     <p>Select Page</p>
                     {
-                        pageNumbers.map(item=>{
-                            return <p onClick={()=>setPage(item)}>{item}</p>
+                        pageNumbers.map((item,index)=>{
+                            return <p key={index} onClick={()=>setPage(item)}>{item}</p>
                         })
                     }
                   </div>
@@ -61,7 +60,7 @@ function HomePage({apiKey,baseUrl}) {
                   <div className='top-rated-cards-wrapper'>
                     {
                         topRatedMovies?.map(movie=>{
-                            return <MovieCard height={'100px'} imageUrl={movie.backdrop_path} 
+                            return <MovieCard key={movie.id} height={'100px'} imageUrl={movie.backdrop_path} 
                             cardStyle={'top-rated-card'}data={movie}
                             radius={'8px'}/>
                         })

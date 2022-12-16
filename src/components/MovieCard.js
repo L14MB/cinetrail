@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import '../styles/movies.css'
 import Rating from './Rating'
+import { Link } from 'react-router-dom'
 
 function MovieCard({data,cardStyle,imageUrl,height,radius}) {
     const imageBaseUrl=process.env.REACT_APP_IMAGE_BASE_URL
@@ -21,7 +22,7 @@ const imageStyle = {
 
 
     return (
-        <div className={cardStyle}>
+        <Link to={`/moviedetails/${data?.id}`} className={cardStyle}>
             <div style={imageStyle}>
                 <div className='movie-info-top'>
                     <Rating movieRating={rating}/>
@@ -36,7 +37,7 @@ const imageStyle = {
                 ? <p>{data?.title}</p>
                 : null
             }
-        </div>
+        </Link>
     )
 }
 
