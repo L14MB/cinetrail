@@ -5,6 +5,8 @@ import ThemeContextProvider from './contexts/ThemeContext';
 import HomePage from './pages/HomePage'
 import Footer from './components/Footer'
 import MovieDetails from './pages/MovieDetails'
+import Signup from './pages/Signup'
+import Signin from './pages/Signin'
 
 function App() {
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -15,6 +17,8 @@ function App() {
       <ThemeContextProvider>
         <Header />
         <Routes>
+          <Route path='/signup' element={<Signup />}/>
+          <Route path='/signin' element={<Signin />}/>
           <Route path='/' element={<HomePage apiKey={apiKey} baseUrl={baseUrl}/>} />
           <Route path='/moviedetails/:movieid' element={<MovieDetails apiKey={apiKey} baseUrl={baseUrl}/>} />
         </Routes>
